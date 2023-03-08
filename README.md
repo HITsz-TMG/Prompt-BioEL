@@ -1,7 +1,7 @@
 # Improving Biomedical Entity Linking with Cross-Entity Interaction
-
-
-<img src="img/combine.png" style="zoom:100%;" />
+<p align="center">
+  <img src="pic/re-ranker-v5.png" width="650"/>
+</p>
 
 For **biomedical entity linking (EL)**,
 we aim at modeling **fine-grained comparison among candidate entities**,
