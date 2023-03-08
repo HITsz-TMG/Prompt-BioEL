@@ -1,13 +1,12 @@
-# Improving Biomedical Entity Linking with Cross-Entity Interaction
+# Prompt-BioEL
 <p align="center">
   <img src="pic/re-ranker-v5.png" width="650"/>
 </p>
 
-For **biomedical entity linking (EL)**,
-we aim at modeling **fine-grained comparison among candidate entities**,
-and propose a re-ranking model based on **prompt tuning**,
+An entity re-ranking model based on **prompt tuning** for **biomedical entity linking**,
 along with a KB-enhanced self-supervised pretraining strategy.
-Our method achieves **state-of-the-art results** across 3 biomedical EL datasets (NCBI disease, BC5CDR and COMETA).
+More details can be found in our paper
+"Improving Biomedical Entity Linking with Cross-Entity Interaction" (accepted by [AAAI 2023](https://aaai-23.aaai.org/)).
 
 
 ## Setup
