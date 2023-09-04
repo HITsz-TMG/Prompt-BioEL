@@ -38,5 +38,24 @@ bash eval_cometa.sh
 ```
 
 ### Preprocess Data
+You can use the command below the to prepare the data for training the retriever.
+- NCBI-Disease
+```
+python preprocess_data.py --dataset dataset/ncbi-disease/ \
+                          --train_data train_dev.json \
+                          --max_ent_len 64
+```
 
+- BC5CDR
+```
+python preprocess_data.py --dataset dataset/bc5cdr/ \
+                          --train_data train.json \
+                          --max_ent_len 128
+```
+- COMETA
+```
+python preprocess_data.py --dataset dataset/cometa/ \
+                          --train_data train.json \
+                          --max_ent_len 64
+```
 
