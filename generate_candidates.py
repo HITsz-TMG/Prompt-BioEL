@@ -185,10 +185,9 @@ if __name__ == '__main__':
     parser.add_argument('--max_len', type=int, default=256,
                         help='max length of the mention input ')
     parser.add_argument("--use_Dual_encoder", default=False)
-    # 用于消歧中找candidates的train，dev,test
     parser.add_argument("--train_data", default="disambiguation_input/train.json")
     parser.add_argument("--dev_data", default="disambiguation_input/dev.json")
-    parser.add_argument("--test_data", default="disambiguation_input/test.json")  # 测试使用需要修改
+    parser.add_argument("--test_data", default="disambiguation_input/test.json")
     parser.add_argument("--disambiguation_dev_output_file", default="disambiguation_output/dev.json")
     parser.add_argument("--disambiguation_test_output_file", default="disambiguation_output/test.json")
     parser.add_argument("--disambiguation_train_output_file", default="disambiguation_output/train.json")
