@@ -23,7 +23,7 @@ Please see the `README.md` files in different folders to download the correspond
 
 ### Evaluate with Our Checkpoints
 After downloading the data and checkpoints, you can use the command below to replicate our results reported in the paper.
-If you want to train your own model, please skip to preprocess data step.
+If you want to train your own model, please skip to [preprocess data step](Preprocess-Data).
 - NCBI-Disease
 ```
 bash eval_ncbi.sh
@@ -36,4 +36,7 @@ bash eval_bc5cdr.sh
 ```
 bash eval_cometa.sh
 ```
+
+### Preprocess Data
+
 
