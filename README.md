@@ -9,10 +9,31 @@ More details can be found in our paper
 "Improving Biomedical Entity Linking with Cross-Entity Interaction" (accepted by [AAAI 2023](https://aaai-23.aaai.org/)).
 
 
-## Setup
+## 🚨: Usage
 
-## Quick Start
+### Environment
+```
+conda activate -n bioEL python=3.9
+conda activate bioEL
+pip install -r requirements.txt
+```
 
-## Citation
+### Data and Checkpoints
+Please see the `README.md` files in different folders to download the corresponding data and checkpoints.
 
+### Evaluate with Our Checkpoints
+After downloading the data and checkpoints, you can use the command below to replicate our results reported in the paper.
+If you want to train your own model, please skip to preprocess data step.
+- NCBI-Disease
+```
+bash eval_ncbi.sh
+```
+- BC5CDR
+```
+bash eval_bc5cdr.sh
+```
+- COMETA
+```
+bash eval_cometa.sh
+```
 
