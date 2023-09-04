@@ -58,4 +58,47 @@ python preprocess_data.py --dataset dataset/cometa/ \
                           --train_data train.json \
                           --max_ent_len 64
 ```
+### Train Retriever
+After the preparation, you can train the retriever with the command below
+- NCBI-Disease
+```
+python run_retriever.py --dataset dataset/ncbi-disease/ \
+                        --model model_retriever/ncbi_retriever.pt \
+                        --epochs 17
+```
+
+- BC5CDR
+```
+python run_retriever.py --dataset dataset/bc5cdr/ \
+                        --model model_retriever/bc5cdr_retriever.pt \
+                        --epochs 20 \
+                        --gpus 0
+```
+- COMETA
+```
+python run_retriever.py --dataset dataset/cometa/ \
+                        --model model_retriever/cometa_retriever.pt \
+                        --epochs 20 \
+                        --gpus 0
+```
+
+### Pretrain
+To improve the performance, you can pretrain the model with the corresponding knowledge base\(KB\). If you want to train the model directly, 
+please skip to the [reranker training step](#Train-Reranker)
+
+- BC5CDR
+```
+python run_pretrain.py --dataset dataset/bc5cdr/ \
+                      --model model_pretrain/bc5cdr_pretrain.pt \
+                      --epochs 15 \
+                      --gpus 0
+```
+- COMETA
+```
+python preprocess_data.py --dataset dataset/cometa/ \
+                          --train_data train.json \
+                          --max_ent_len 64
+```
+
+### Train
 
