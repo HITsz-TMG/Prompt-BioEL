@@ -59,12 +59,13 @@ python preprocess_data.py --dataset dataset/cometa/ \
                           --max_ent_len 64
 ```
 ### Train Retriever
-After the preparation, you can train the retriever with the command below
+After the preparation, you can train the retriever with the command below.
 - NCBI-Disease
 ```
 python run_retriever.py --dataset dataset/ncbi-disease/ \
                         --model model_retriever/ncbi_retriever.pt \
-                        --epochs 17
+                        --epochs 17 \
+                        --gpus 0
 ```
 
 - BC5CDR
@@ -83,8 +84,8 @@ python run_retriever.py --dataset dataset/cometa/ \
 ```
 
 ### Pretrain
-To improve the performance, you can pretrain the model with the corresponding knowledge base\(KB\). If you want to train the model directly, 
-please skip to the [reranker training step](#Train-Reranker)
+To improve the reranking performance, you can pretrain the model with the corresponding knowledge base\(KB\). If you want to train the model directly, 
+please skip to the [reranker training step](#Train-Reranker).
 
 - BC5CDR
 ```
@@ -95,10 +96,42 @@ python run_pretrain.py --dataset dataset/bc5cdr/ \
 ```
 - COMETA
 ```
-python preprocess_data.py --dataset dataset/cometa/ \
-                          --train_data train.json \
-                          --max_ent_len 64
+python run_pretrain.py --dataset dataset/cometa/ \
+                      --model model_pretrain/cometa_pretrain.pt \
+                      --epochs 10 \
+                      --gpus 0
 ```
 
-### Train
+### Train Reranker
+After retrieving the candidate entities, you can train the reranker with the command below to get the final answer.
+If you do not pretrain the model or use our checkpoint, either, the `--use_pretrained_model` is not needed anymore.
+- NCBI-Disease
+```
+python run_disambiguation_prompt.py --dataset dataset/ncbi-disease/ \
+                                    --model model_disambiguation/ncbi_disambiguation_prompt_pretrain.pt \
+                                    --pretrained_model_path model_pretrain/bc5cdr_pretrain.pt \
+                                    --epochs 9 \
+                                    --gpus 1 \
+                                    --use_pretrained_model
+```
+
+- BC5CDR
+```
+python run_disambiguation_prompt.py --dataset dataset/bc5cdr/ \
+                                    --model model_disambiguation/bc5cdr_disambiguation_prompt_pretrain.pt \
+                                    --pretrained_model_path model_pretrain/bc5cdr_pretrain.pt \
+                                    --epochs 28 \
+                                    --gpus 0 \
+                                    --use_pretrained_model
+```
+- COMETA
+```
+python run_disambiguation_prompt.py --dataset dataset/cometa/ \
+                                    --model model_disambiguation/cometa_disambiguation_prompt_pretrain.pt \
+                                    --pretrained_model_path model_pretrain/cometa_pretrain.pt \
+                                    --epochs 40 \
+                                    --gpus 0 \
+                                    --use_pretrained_model
+```
+
 
